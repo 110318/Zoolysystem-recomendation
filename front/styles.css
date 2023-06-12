@@ -1,0 +1,138 @@
+* {
+  font-family: "Glory", sans-serif;
+  color: #584343;
+  font-size: 35px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0px solid #C6C1BD;
+  border-width: 0px 0px 4px 0px;
+}
+
+._P-limites {
+  margin: -20px;
+  padding: 0px 25px;
+  display: flex;
+  justify-content: space-between;
+}
+._P-limites > p {
+  font-size: 22px;
+  margin: 30px 0px 60px;
+}
+
+.ult-paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ult-paso #metodo-agrup {
+  border: 8px solid #BDA188;
+  border-radius: 0px 0px 25PX 25px;
+  width: 75%;
+  padding: 0px 25px;
+}
+.ult-paso .head {
+  width: 75%;
+  background-color: #BDA188;
+  border-radius: 25PX 25px 0px 0px;
+  padding-top: 10px;
+}
+.ult-paso .head p {
+  margin: 0px 35px;
+}
+
+#send-it {
+  margin-top: 30px;
+  width: 200px;
+  border: none;
+  border-radius: 100px;
+  background-color: #4B2A57;
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+.Bienvenida {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#nom_user {
+  width: 85%;
+  background-color: #BDA188;
+  border: none;
+  border-radius: 100px;
+  padding: 5px 40px;
+}
+#nom_user::-moz-placeholder {
+  color: #584343;
+}
+#nom_user::placeholder {
+  color: #584343;
+}
+#nom_user:focus {
+  border: 1px solid #4B2A57;
+}
+
+.contenido {
+  padding: 20px 15%;
+}
+
+.sliders {
+  display: flex;
+  justify-content: space-between;
+}
+
+.side {
+  width: 45%;
+}
+
+.drag_bar {
+  margin-top: 15px;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 50px;
+  background: #634F3D;
+  outline: none;
+}
+
+.drag_bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 35px;
+  border-radius: 100px;
+  background: #4B2A57;
+  cursor: pointer;
+}
+
+.drag_bar::-moz-range-thumb {
+  width: 15px;
+  height: 35px;
+  border-radius: 100px;
+  background: #4B2A57;
+  cursor: pointer;
+}
+
+.contenido-generado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contenido-generado .resultado {
+  display: flex;
+}
+.contenido-generado p {
+  text-align: center;
+}
+.contenido-generado picture > img {
+  width: 400px;
+}/*# sourceMappingURL=styles.css.map */
