@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +9,266 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Zooly System</title>
 </head>
+
 <body>
-    <h1>ZOOLY SYSTEM</h1>
-    <section class="banner">
-        <img src="imgs/Logo.png" alt="" class="flex-end">
+    <header>
+        <picture><img src="./recursos/ui/logo.png" alt=""></picture>
+        <section>
+            <p>Descubre el animal ideal para tu grupo</p>
+        </section>
+    </header>
+
+    <section class="contenido">
+        <form action="" method="post">
+
+            <section class="Bienvenida">
+
+                <p>Dinos como llamarte:</p>
+                <input placeholder="Ingresa tu nombre aqui" id="nom_user" type="text">
+
+            </section>
+
+            <section>
+                <p>¿Qué tan importantes son estas características para ti?</p>
+
+                <section class="sliders">
+                    <section class="side">
+                        <section class="_slide">
+                            <label for="Cola-esponjosa">Cola esponjosa</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Cola-esponjosa"
+                                id="Cola-esponjosa">
+                            <output for="Cola-esponjosa"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Pelaje-corto">Pelaje corto</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Pelaje-corto" id="Pelaje-corto">
+                            <output for="Pelaje-corto"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Osico-alargado">Osico alargado</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Osico-alargado"
+                                id="Osico-alargado">
+                            <output for="Osico-alargado"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Pico">Pico</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Pico" id="Pico">
+                            <output for="Pico"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Pesuñas">Pesuñas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Pesuñas" id="Pesuñas">
+                            <output for="Pesuñas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Alas">Alas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Alas" id="Alas">
+                            <output for="Alas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+                    </section>
+
+                    <section class="side">
+                        <section class="_slide">
+                            <label for="Ojos-redondos">Ojos redondos</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Ojos-redondos"
+                                id="Ojos-redondos">
+                            <output for="Ojos-redondos"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Plumas">Plumas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Plumas" id="Plumas">
+                            <output for="Plumas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="orejas-puntiagudas">Orejas puntiagudas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="orejas-puntiagudas"
+                                id="orejas-puntiagudas">
+                            <output for="orejas-puntiagudas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Manchas">Manchas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Manchas" id="Manchas">
+                            <output for="Manchas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Garras">Garras</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Garras" id="Garras">
+                            <output for="Garras"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+
+                        <section class="_slide">
+                            <label for="Aletas">Aletas</label>
+                            <input class="drag_bar" type="range" min="1" max="5" name="Aletas" id="Aletas">
+                            <output for="Aletas"></output>
+                            <section class="_P-limites">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+
+
+            </section>
+
+            <section class="ult-paso">
+                <section class="head">
+                    <p>Escoge un método de agregación</p>
+                </section>
+                <select name="metodo-agrup" id="metodo-agrup">
+
+                    <option value="naive-bayes">Naive Bayes</option>
+                    <option value="least-misery">Least Misery</option>
+                    <option value="most-pleasure">Most Pleasure</option>
+                    <option value="---">---</option>
+                </select>
+    
+                <button id="send-it"  type="button"  onclick="guardarValores()"> Enviar </button>
+            </section>
+        </form>
+    </section>
+
+    <section class="contenido-generado">
+
+        <p>Este es el animal elegido</p>
+
+        <section class="resultado">
+
+            <section class="animalpng">
+                <picture>
+                    <img src="./recursos/animalitos/gato.png" alt="">
+                </picture>
+            </section>
+
+            <section>
+
+                <p class="titulo">Dentro de la comunidad de este animal están: </p>
+
+                <ul>
+
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    
+                </ul>
+
+            </section>
+
+        </section>
+
+    </section>
 
 
 
+
+
+    <footer>
+        <script src="./index.js"></script>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;500;600&display=swap" rel="stylesheet"> 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </footer>
+
+  <!-- no se que es esto de abajo tons ahi lo dejo -->
     </section>
     <ul class="names-list">
     <li></li>
-</ul>
-    <script src="./index.js"></script>
-
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </ul>
 </body>
+
 </html>
