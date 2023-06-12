@@ -12,13 +12,51 @@
     <h1>ZOOLY SYSTEM</h1>
     <section class="banner">
         <img src="imgs/Logo.png" alt="" class="flex-end">
+        <ul class="names-list">
+            <li></li>
+            </ul>
+    </section>
 
+
+
+    <section class="sliders">
+        <h2>Características de los Animales</h2>
+    <div class="sliders">
+    <label for="slider-cola-esponjosa">Cola esponjosa</label>
+    <input type="range" id="slider-cola-esponjosa" min="0" max="5" step="1" value="0">
+    </div>
 
 
     </section>
-    <ul class="names-list">
-    <li></li>
-</ul>
+
+    <section class="vecindario">
+        <h2>Neighborhood</h2>
+    <div>
+        <label for="k_neighbors">K Neighbors:</label>
+        <input type="number" id="k_neighbors" min="1" value="5">
+    </div>
+    </section>
+
+    <section class="method-agregation">
+        <label for="aggregation-select">Método de Agregación</label>
+        <select id="aggregation-select">
+          <option value="naive_bayes">Naive Bayes</option>
+          <option value="least_misery">Least Misery</option>
+          <option value="most_pleasure">Most Pleasure</option>
+        </select>
+
+
+    </section>
+
+    <button id="recommendButton">Recommend Animal</button>
+
+    <h2>Recommendation</h2>
+    <div id="recommendation"></div>
+
+    <h2>Nearest Neighbors</h2>
+    <ul id="neighbors"></ul>
+
+    
     <script src="./index.js"></script>
 
      <!-- Optional JavaScript -->
