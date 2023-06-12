@@ -1,21 +1,26 @@
 // parte de su servidor zorrito 
 function guardarValores() {
-    var inputs = document.getElementsByClassName('drag_bar');
+
+    // aqui guarda el metodo de agrupacion en un string
+    var metodoAgrup = document.getElementById("metodo-agrup").value;
+    // y aqui los valores de los slider
     var valores = {};
+
+    var inputs = document.getElementsByClassName('drag_bar');
+    
     
     for (var i = 0; i < inputs.length; i++) {
         var nombre = inputs[i].getAttribute('name');
         var valor = inputs[i].value;
         valores[nombre] = valor;
     }
-    
-    console.log(valores); // Aquí puedes hacer lo que desees con el objeto de valores
-    
-    // También puedes enviar los valores a través de una petición AJAX si lo deseas
-    
+
+    // Aquí puedes hacer lo que desees con el objeto de valores
+    console.log(valores + metodoAgrup); 
+ 
     // Restaurar los valores a sus valores iniciales
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = 1;
+        inputs[i].value = 3;
     }
 }
 
@@ -25,7 +30,7 @@ function guardarValores() {
 // GET REQUEST 
 // parte de Cam
 const DOMAIN = "http://localhost:"
-const PORT = 5001
+const PORT = 5000
 
 //RESOURCES
 const RESOURCE = "nombres"
