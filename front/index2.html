@@ -87,8 +87,9 @@
                     slider.type = "range";
                     slider.id = caracteristica;
                     slider.min = "0";
-                    slider.max = "10";
-                    slider.value = "5";
+                    slider.max = "5";
+                    slider.value = "2.5";
+                    slider.step = "0.5";
                     slidersContainer.appendChild(slider);
 
                     slidersContainer.appendChild(document.createElement("br"));
@@ -138,16 +139,19 @@
                     var vecinos = response.neighbors;
 
                     // Mostrar la recomendación y los vecinos en la página 4
-                    document.getElementById("recomendacion").innerText = recomendacion;
+                    var recomendacionElement = document.getElementById("recomendacion");
+                    recomendacionElement.innerText = "Animales recomendados: " + recomendacion.join(", ");
 
                     var vecinosDiv = document.getElementById("vecinos");
                     vecinosDiv.innerHTML = "";
                     vecinos.forEach(neighbor => {
                         var similitud = (neighbor.Similarity * 100).toFixed(2) + "%";
                         var vecinoElement = document.createElement("p");
-                        vecinoElement.innerText = neighbor.Nombre + " - Similitud: " + similitud;
+                        vecinoElement.innerText = neighbor.Nombre ;
                         vecinosDiv.appendChild(vecinoElement);
                     });
+
+                    console.log("Valores de la protopersona:", pesos);
                 });
             }
         }
