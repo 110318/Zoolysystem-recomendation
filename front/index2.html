@@ -72,7 +72,7 @@
     <!-- Página 4: Recomendación del Animal y Vecinos -->
     <div id="pagina4" class="hidden container mt-5">
         <h2>Recomendación:</h2>
-        <p id="recomendacion"></p>
+        <div id="recomendacion"></div>
         <h2>Vecinos:</h2>
         <div id="vecinos"></div>
         <div class="mt-3">
@@ -146,8 +146,8 @@
                                 slider.type = "range";
                                 slider.id = caracteristica;
                                 slider.min = "0";
-                                slider.max = "10";
-                                slider.value = "5";
+                                slider.max = "1";
+                                slider.value = "0.5";
                                 container.appendChild(slider);
 
                                 var sliderValue = document.createElement("span");
@@ -201,14 +201,20 @@
                         var vecinos = response.neighbors;
 
                         // Mostrar la recomendación y los vecinos en la página 4
-                        document.getElementById("recomendacion").innerText = recomendacion;
+                        document.getElementById("recomendacion").
+                        innerHTML = `                        
+                            <p>${recomendacion}</p>
+                            <picture style="display: flex; flex-direction: column; align-items: center;">
+                                <img src="./imgs/${recomendacion}.png" alt=""  >
+                            </picture>
+                        `;
 
                         var vecinosDiv = document.getElementById("vecinos");
                         vecinosDiv.innerHTML = "";
                         vecinos.forEach(neighbor => {
-                            var similitud = (neighbor.Similarity * 100).toFixed(2) + "%";
+                            
                             var vecinoElement = document.createElement("p");
-                            vecinoElement.innerText = neighbor.Nombre + " - Similitud: " + similitud;
+                            vecinoElement.innerText = neighbor.Nombre;
                             vecinosDiv.appendChild(vecinoElement);
                         });
                     });

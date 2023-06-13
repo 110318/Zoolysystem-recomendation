@@ -43,57 +43,53 @@ def index():
         "dataFrame": people,
         "columns": list(df_personas.columns)
     })
-
-@app.route('/recommend', methods=['GET','POST'])
+@app.route('/recommend', methods=['POST'])
 def recommend():
-    if request.method == 'POST':
-        data = request.get_json()
-        node_name = data['node']
-        weights = data['weights']
-        k_neighbors = data['k_neighbors']
-        aggregation_method = data['aggregation_method']
+    data = request.get_json()
+    node_name = data['node']
+    weights = data['weights']
+    k_neighbors = data['k_neighbors']
+    aggregation_method = data['aggregation_method']
 
-        weighted_X = X * np.array([float(weights.get(feature, 0)) for feature in features]).reshape(1, -1)
+    weighted_X = X * np.array([float(weights.get(feature, 0)) for feature in features]).reshape(1, -1)
 
-        node_index = nombres.index(node_name)
+    node_index = nombres.index(node_name)
 
-        distances, indices = knn.kneighbors(weighted_X)
+    distances, indices = knn.kneighbors(weighted_X)
 
-        recommendations = df.iloc[indices[node_index]]
+    recommendations = df.iloc[indices[node_index]]
 
-        if aggregation_method == 'naive_bayes':
-            aggregated_recommendation = recommendations.any(axis=0)
-        elif aggregation_method == 'least_misery':
-            aggregated_recommendation = recommendations.min(axis=0)
-        elif aggregation_method == 'most_pleasure':
-            aggregated_recommendation = recommendations.max(axis=0)
-        else:
-            return jsonify({'error': 'Invalid aggregation method'})
+    if aggregation_method == 'naive_bayes':
+        aggregated_recommendation = recommendations[caracteristicas].any(axis=0)
+    elif aggregation_method == 'least_misery':
+        aggregated_recommendation = recommendations[caracteristicas].min(axis=0)
+    elif aggregation_method == 'most_pleasure':
+        aggregated_recommendation = recommendations[caracteristicas].max(axis=0)
+    else:
+        return jsonify({'error': 'Invalid aggregation method'})
+    
+    print(aggregation_method)
 
-        # Obtener las características presentes en el DataFrame df_animales
-        caracteristicas_presentes = [c for c in caracteristicas if c in df_animales.columns]
+    # Obtener las características presentes en el DataFrame df_animales
+    caracteristicas_presentes = [c for c in caracteristicas if c in df_animales.columns]
 
-        # Traducir los valores de la protopersona al rango de 1 y 0
-        protopersona_valores = [int(float(data['weights'].get(caracteristica, 0)) >= 0.5) for caracteristica in caracteristicas_presentes]
+    # Traducir los valores de la protopersona al rango de 1 y 0
+    protopersona_valores = [int(float(data['weights'].get(caracteristica, 0)) >= 0.5) for caracteristica in caracteristicas_presentes]
 
-        print(protopersona_valores)
+    animales_recomendados = df_animales.copy()
+    for caracteristica, valor in zip(caracteristicas_presentes, protopersona_valores):
+        animales_recomendados = animales_recomendados[animales_recomendados[caracteristica].astype(float) >= float(valor)]
 
-        animales_recomendados = df_animales.copy()
-        for caracteristica, valor in zip(caracteristicas_presentes, protopersona_valores):
-            animales_recomendados = animales_recomendados[animales_recomendados[caracteristica].astype(float) >= float(valor)]
+    if not animales_recomendados.empty:
+        recommended_animal = animales_recomendados.iloc[0]['Animales']
+    else:
+        recommended_animal = ""
 
-        if not animales_recomendados.empty:
-            recommended_animal = animales_recomendados.iloc[0]['Animales']
-        else:
-            recommended_animal = ""
+    return jsonify({
+        'recommendation': recommended_animal,
+        'neighbors': recommendations.to_dict(orient='records')
+    })
 
-        return jsonify({
-            'recommendation': recommended_animal,
-            'neighbors': recommendations.to_dict(orient='records')
-        })
-
-    elif request.method == 'GET':
-        return jsonify({'message': 'GET request received'})
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
