@@ -1,7 +1,7 @@
 # Zoolysystem-recomendation
 
 ## Juan Pablo Agredo - A00
-## Christian Camilo Castro - 
+## Christian Camilo Castro - A00369032
 ## Andrés Camilo Gómez Amaya - A00369838
 # 🐍 Python simple Flask REST API
 ### Installation
