@@ -30,7 +30,7 @@ function guardarValores() {
 // GET REQUEST 
 // parte de Cam
 const DOMAIN = "http://localhost:"
-const PORT = 5000
+const PORT = 5001
 
 //RESOURCES
 const RESOURCE = "nombres"
@@ -161,8 +161,8 @@ const postEndpoint = async () => {
     }
 }
 
-const recommendButton = document.getElementById('recommendButton')
-recommendButton.addEventListener('click', getRecommendation)
+// const recommendButton = document.getElementById('recommendButton')
+// recommendButton.addEventListener('click', getRecommendation)
 
 
 

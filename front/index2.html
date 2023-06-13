@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recomendación de Animales</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recomendación de Animales</h1>
+
+    <!-- Página 1: Seleccionar Persona -->
+    <div id="pagina1">
+        <h2>Seleccionar Persona:</h2>
+        <select id="selectPersona">
+            <!-- Opciones generadas dinámicamente -->
+        </select>
+        <button onclick="mostrarPagina(2)">Siguiente</button>
+    </div>
+
+    <!-- Página 2: Seleccionar Pesos -->
+    <div id="pagina2" class="hidden">
+        <h2>Seleccionar Pesos:</h2>
+        <!-- Sliders generados dinámicamente -->
+        <div id="slidersContainer">
+        </div>
+        <button onclick="mostrarPagina(3)">Siguiente</button>
+        <button onclick="mostrarPagina(1)">Anterior</button>
+    </div>
+
+    <!-- Página 3: Seleccionar Método de Agregación -->
+    <div id="pagina3" class="hidden">
+        <h2>Seleccionar Método de Agregación:</h2>
+        <label for="selectMetodo">Método:</label>
+        <select id="selectMetodo">
+            <option value="naive_bayes">Naive Bayes</option>
+            <option value="least_misery">Least Misery</option>
+            <option value="most_pleasure">Most Pleasure</option>
+        </select>
+        <button onclick="mostrarPagina(4)">Siguiente</button>
+        <button onclick="mostrarPagina(2)">Anterior</button>
+    </div>
+
+    <!-- Página 4: Recomendación del Animal y Vecinos -->
+    <div id="pagina4" class="hidden">
+        <h2>Recomendación:</h2>
+        <p id="recomendacion"></p>
+        <h2>Vecinos:</h2>
+        <div id="vecinos"></div>
+        <button onclick="mostrarPagina(3)">Anterior</button>
+    </div>
+
+    <script>
+        var paginaActual = 1;
+        var nombres = [];
+        var caracteristicas = [];
+
+        // Obtener los nombres de las personas desde el backend
+        fetch("http://localhost:5001/nombres")
+            .then(response => response.json())
+            .then(data => {
+                nombres = data.Nombres;
+                var selectPersona = document.getElementById("selectPersona");
+                nombres.forEach(nombre => {
+                    var option = document.createElement("option");
+                    option.text = nombre;
+                    option.value = nombre;
+                    selectPersona.add(option);
+                });
+            });
+
+        // Obtener las características desde el backend
+        fetch("http://localhost:5001/nombres")
+            .then(response => response.json())
+            .then(data => {
+                caracteristicas = data.columns.slice(1);
+                var slidersContainer = document.getElementById("slidersContainer");
+                caracteristicas.forEach(caracteristica => {
+                    var label = document.createElement("label");
+                    label.htmlFor = caracteristica;
+                    label.innerText = caracteristica + ": ";
+                    slidersContainer.appendChild(label);
+
+                    var slider = document.createElement("input");
+                    slider.type = "range";
+                    slider.id = caracteristica;
+                    slider.min = "0";
+                    slider.max = "10";
+                    slider.value = "5";
+                    slidersContainer.appendChild(slider);
+
+                    slidersContainer.appendChild(document.createElement("br"));
+                });
+            });
+
+        function mostrarPagina(numeroPagina) {
+            var paginaAnterior = paginaActual;
+            paginaActual = numeroPagina;
+
+            // Ocultar página anterior
+            document.getElementById("pagina" + paginaAnterior).classList.add("hidden");
+
+            // Mostrar página actual
+            document.getElementById("pagina" + paginaActual).classList.remove("hidden");
+
+            if (paginaActual === 4) {
+                // Recopilar los datos seleccionados antes de mostrar la página de recomendación
+                var persona = document.getElementById("selectPersona").value;
+                var pesos = {};
+                var sliders = document.getElementsByTagName("input");
+                for (var i = 0; i < sliders.length; i++) {
+                    var caracteristica = sliders[i].id;
+                    var valor = sliders[i].value;
+                    pesos[caracteristica] = valor;
+                }
+                var metodo = document.getElementById("selectMetodo").value;
+
+                var data = {
+                    node: persona,
+                    weights: pesos,
+                    k_neighbors: 5,
+                    aggregation_method: metodo
+                };
+
+                // Enviar los datos al backend para obtener la recomendación
+                fetch("http://localhost:5001/recommend", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(response => {
+                    var recomendacion = response.recommendation;
+                    var vecinos = response.neighbors;
+
+                    // Mostrar la recomendación y los vecinos en la página 4
+                    document.getElementById("recomendacion").innerText = recomendacion;
+
+                    var vecinosDiv = document.getElementById("vecinos");
+                    vecinosDiv.innerHTML = "";
+                    vecinos.forEach(neighbor => {
+                        var similitud = (neighbor.Similarity * 100).toFixed(2) + "%";
+                        var vecinoElement = document.createElement("p");
+                        vecinoElement.innerText = neighbor.Nombre + " - Similitud: " + similitud;
+                        vecinosDiv.appendChild(vecinoElement);
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+</html>
